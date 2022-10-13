@@ -1,29 +1,31 @@
+class Machine:
+    cupCount = 1
+    
+    def __init__(self, coin, cupCount):
+        self.coinIn = CoinIn()
+        self.coinIn.coin = coin
+        self.cupCount = cupCount
+    
+    def showData(self):
+        msg = self.coinIn.culc(self.cupCount)
+        print(msg)
 
 
 class CoinIn:
-    def calc(self, cupCount):
-        re=""
+    coin = 0
+    change = 0
     
-        if self.coin < 200:
-            re="요금이 부족하네요."
-        elif cupCount * 200 > self.coin:
-            re="요금이 부족합니다."
-        else:
-            self.change=self.coin - (200 * cupCount) #잔돈 계산
-            re="커피 {}잔과 잔돈 {}원".format(cupCount, self.change)
-        
-    
-class Machine:
-    cupCount=1 #현재 코드에서는 의미 없음
-    
-    def __init__(self):
-        self.coinIn=CoinIn()
-        
-    def showData(self):
-        self.coinIn.coin=int(input("동전을 입력하세요 : "))
-        self.cupCount=int(input("몇 잔을 원하세요? : "))
-        
-        print(self.coinIn.calc(self.cupCount))
-        
-if __name__=='__main__':
-    Machine().showData()
+    def culc(self, cupCount):
+        change = self.coin - cupCount*200
+        if change >= 0:
+            self.change = change
+            return f'커피 {cupCount}잔과 잔돈 {self.change}원'
+        return "요금 부족!!"
+
+
+
+if __name__ == '__main__':
+    coin = int(input('동전을 입력하세요 : '))
+    cup = int(input('몇 잔을 원하세요 : '))
+    useMuchine = Machine(coin, cup)
+    useMuchine.showData()

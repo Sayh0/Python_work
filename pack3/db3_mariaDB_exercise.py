@@ -8,7 +8,16 @@ import MySQLdb
 import pickle
 
 with open('mydb.dat', mode='rb') as obj:
-    config = pickle.load(obj) # 시험 볼 때는 config 통으로 써 주세용 
+    #config = pickle.load(obj) # 시험 볼 때는 config 통으로 써 주세용
+    config ={
+    'host':'127.0.0.1',
+    'user':'root',
+    'password':'123', 
+    'database':'test',
+    'port':3306,
+    'charset':'utf8',
+    'use_unicode':True
+    } 
 
 def chulbal():
     try:

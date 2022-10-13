@@ -21,6 +21,8 @@ th1=threading.Thread(target=run, args=('일')) #argument는 무조건 tuple 타�
 th2=threading.Thread(target=run, args=('이'))
 th1.start()
 th2.start()
+th1.join()
+th2.join() #메인스레드 종료까지 대기시킴
 
 print('program terminated')
 #스레드는 3개이다. 메인 스레드까지 있다는 것을 까먹지 말자~!
